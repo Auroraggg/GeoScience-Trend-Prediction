@@ -1,37 +1,6 @@
-# GraphBERT 模型训练配置文件
-
-model:
-  name: "GraphBERT"
-  semantic_dim: 1536       # BERT关键词嵌入(768) + 题名语境嵌入(768)
-  struct_dim: 32           # MLP编码后的结构特征维度
-  hidden_dim: 256          # Transformer隐层维度
-  num_layers: 4            # Transformer编码层数
-  num_heads: 8             # 多头注意力头数
-  ffn_dim: 512             # FFN中间层维度
-  dropout: 0.1             # Dropout概率
-  k_neighbors: 10          # 近邻子图采样数量
-
-training:
-  lr: 0.0001               # 初始学习率
-  epochs: 200              # 最大训练轮数
-  batch_size: 512          # 每批样本数
-  weight_decay: 0.0001     # L2正则化系数
-  patience: 20             # 早停耐心值
-  neg_ratio: 1.0           # 负样本比例（相对于正样本）
-  seed: 42
-
-data:
-  train_years: [2020, 2021, 2022, 2023]
-  test_years: [2024]
-  min_keyword_freq: 5
-  min_keyword_len: 2
-  max_keyword_len: 50
-
-bert:
-  model_name: "allenai/scibert_scivocab_uncased"
-  batch_size: 32
-  max_length: 64
-
-paths:
-  processed_dir: "data/processed"
-  results_dir: "experiments/results/graphbert"
+# GraphBERT Configuration
+model: GraphBERT
+parameters:
+  layers: 2
+  heads: 8
+  dropout: 0.1
